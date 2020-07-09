@@ -1,0 +1,7 @@
+FROM ubuntu:16.04
+
+# Install curl
+RUN DEBIAN_FRONTEND=noninteractive apt-get -yqq update \
+ && DEBIAN_FRONTEND=noninteractive apt-get -yqq install curl
+
+ENTRYPOINT [ "/bin/bash", "-c", "sleep 10s; curl http://tomcat:8080; sleep 5m" ]

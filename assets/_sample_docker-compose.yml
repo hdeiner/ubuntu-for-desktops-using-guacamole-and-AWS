@@ -1,0 +1,21 @@
+version: "3.3"
+
+services:
+  tomcat_service:
+    image: howarddeiner/sampletomcat
+    container_name: tomcat
+    ports:
+      - "8080:8080"
+    networks:
+      tomcat_network:
+  curl_service:
+    build:
+      context: .
+      dockerfile: DockerfileCurl
+    container_name: curl
+    networks:
+      tomcat_network:
+
+networks:
+  tomcat_network:
+    driver: bridge

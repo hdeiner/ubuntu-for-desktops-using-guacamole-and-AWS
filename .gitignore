@@ -1,0 +1,27 @@
+# Eclipse
+.classpath
+.project
+.settings/
+
+# Intellij
+.idea/
+*.iml
+*.iws
+
+# Mac
+.DS_Store
+
+# Bash
+*.swp
+
+# Maven
+log/
+target/
+.mvn
+dependency-reduced-pom.xml
+
+# Terraform
+.terraform
+*.tfstate
+*.tfstate.backup
+
