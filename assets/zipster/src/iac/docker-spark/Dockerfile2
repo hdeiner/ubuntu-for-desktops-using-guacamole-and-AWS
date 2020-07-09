@@ -1,0 +1,15 @@
+FROM openjdk:8u222-jre-slim-buster
+
+# Install mysql client
+RUN apt-get update -yqq && apt-get install default-mysql-client -yqq
+
+# Deploy the executable
+COPY zipster-1.0-SNAPSHOT-jar-with-dependencies.jar /
+EXPOSE 8080
+
+# Create wait_for_mysql_to_start.sh
+COPY wait_for_mysql_to_start.sh /
+RUN chmod +x /wait_for_mysql_to_start.sh
+
+# Get the service running after waiting for mysql_container to come alive
+CMD /wait_for_mysql_to_start.sh && java -jar zipster-1.0-SNAPSHOT-jar-with-dependencies.jar

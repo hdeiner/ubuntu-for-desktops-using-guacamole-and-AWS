@@ -8,4 +8,4 @@ COPY zipster-1.0-SNAPSHOT-jar-with-dependencies.jar /
 EXPOSE 8080
 
 # Get the service running
-CMD ["java", "-jar", "zipster-1.0-SNAPSHOT-jar-with-dependencies.jar"]
+CMD java -jar zipster-1.0-SNAPSHOT-jar-with-dependencies.jar

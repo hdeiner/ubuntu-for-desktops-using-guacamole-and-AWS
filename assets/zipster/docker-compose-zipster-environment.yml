@@ -4,6 +4,7 @@ services:
   spark_service:
     build:
       context: src/iac/docker-spark
+      dockerfile: Dockerfile
     container_name: spark_container
     ports:
       - "8080:8080"

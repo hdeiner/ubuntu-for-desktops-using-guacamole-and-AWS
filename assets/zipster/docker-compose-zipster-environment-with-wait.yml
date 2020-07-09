@@ -1,0 +1,33 @@
+version: "3.3"
+
+services:
+  spark_service:
+    build:
+      context: src/iac/docker-spark
+      dockerfile: Dockerfile2
+    container_name: spark_container
+    ports:
+      - "8080:8080"
+    networks:
+      container_network:
+    depends_on:
+      - mysql_service
+  mysql_service:
+    image: mysql
+    container_name: mysql_container
+    ports:
+      - "3306:3306"
+    networks:
+      container_network:
+    volumes:
+      - ./mysql-data:/var/lib/mysql
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_DATABASE: 'zipster'
+      MYSQL_USER: 'user'
+      MYSQL_PASSWORD: 'password'
+      MYSQL_ROOT_PASSWORD: 'password'
+
+networks:
+  container_network:
+    driver: bridge
