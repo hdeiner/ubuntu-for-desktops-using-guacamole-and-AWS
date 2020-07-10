@@ -15,7 +15,7 @@ done
 
 docker exec mysql_container mysql -u root --password=password  --plugin-dir=/usr/local/mysql/lib64/mysql/plugin -e 'CREATE USER "FLYWAY" IDENTIFIED BY "FLYWAY";' > /dev/null
 
-./flyway-4.2.0/flyway -target=2_1 migrate
+./flyway-4.2.0/flyway -target=3_1 migrate
 
 docker exec mysql_container mysqladmin --password=password shutdown
 sleep 15
